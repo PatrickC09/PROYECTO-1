@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo"> {{ titulo | uppercase }} </span>
+                    <form class="mt-3" [formGroup]="productoForm" (ngSubmit)="agregarProducto()">
+                        <div class="mb-3">
+
+                            <input type="text" formControlName="producto" class="form-control form-control-lg"
+                                placeholder="Producto">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('producto')?.hasError('required') && productoForm.get('producto')?.touched">
+                                <span> El nombre del producto <strong> es Obligatorio </strong></span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" formControlName="descripcion" class="form-control form-control-lg"
+                                placeholder="Descripcion">
+
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('descripcion')?.hasError('required') && productoForm.get('descripcion')?.touched">
+                                <span> La descripcion <strong> es Obligatoria </strong></span>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <input type="text" formControlName="cantidad" class="form-control form-control-lg"
+                                placeholder="Cantidad">
+
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('cantidad')?.hasError('required') && productoForm.get('cantidad')?.touched">
+                                <span> La cantidad <strong> es Obligatoria </strong></span>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <input type="number" formControlName="precio" class="form-control form-control-lg"
+                                placeholder="Precio">
+                            <div class="text-danger"
+                                *ngIf="productoForm.get('precio')?.hasError('required') && productoForm.get('precio')?.touched">
+                                <span> El precio <strong> es Obligatorio </strong></span>
+                            </div>
+                        </div>
+
+
+                        <div class="mb-3">
+                            <button routerLink="/" class="btn btn-secondary btn-lg float-start"> Cancelar </button>
+                            <button type="submit" [disabled]="productoForm.invalid" class="btn btn-success btn-lg float-end"> Aceptar </button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
